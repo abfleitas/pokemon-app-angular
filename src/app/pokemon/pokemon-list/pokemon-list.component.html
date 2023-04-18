@@ -1,0 +1,29 @@
+<div class="container">
+    <div class="search">
+        <input type="text" placeholder="Search Pokemon" #txtSearch (keyup)="onSearchPokemon(txtSearch.value)">
+    </div>
+    <div class="container-poke">
+        <div *ngFor="let poke of pokemons | filtro:search | paginate: { itemsPerPage: itemsPerPage, currentPage: page, totalItems: totalPokemons }">
+            <figure [class]="poke.types[0]" (click)="toNavigate(poke.id)">
+                <div class="card-elements">
+                    <div class="image">
+                        <h2>{{poke.name}}</h2>
+                        <img [src]="poke.sprites" [alt]="poke.name" />
+                    </div>
+                    <div class="info">
+                        <div *ngIf="poke.types.length > 1" class="types">
+                            <h3 class="cardType">{{poke.types[0]}}</h3>
+                            <h3 class="cardType">{{poke.types[1]}}</h3>
+                        </div>
+                        <div *ngIf="poke.types.length < 2" class="types">
+                            <h3 class="cardType">{{poke.types[0]}}</h3>
+                        </div> 
+                    </div> 
+                </div>  
+            </figure>
+        </div>
+    </div>
+    <div class="pagination">
+        <pagination-controls (pageChange)="page = $event; pokemons = []; getPokemon()" previousLabel="" nextLabel=""></pagination-controls>
+    </div>
+</div>

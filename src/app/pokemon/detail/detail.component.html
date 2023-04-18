@@ -1,0 +1,38 @@
+<div *ngIf="pokeDetails.name !== ''" class="detail">
+    <div class="container_detail">
+        <div class="top">
+            <h3>{{pokeDetails.name}}</h3>
+            <img [src]="pokeDetails.sprites" alt="poke-detail" />
+        </div>
+        <div class="container_types">
+            <div *ngIf="pokeDetails.types.length > 1" class="types">
+                <h3 [id]="pokeDetails.types[0]">{{pokeDetails.types[0]}}</h3>
+                <h3 [id]="pokeDetails.types[1]">{{pokeDetails.types[1]}}</h3>
+            </div>
+            <div *ngIf="pokeDetails.types.length < 2" class="types">
+                <h3 [id]="pokeDetails.types[0]">{{pokeDetails.types[0]}}</h3>
+            </div> 
+        </div>
+        <div class="stats">
+            <div class="stats_1">
+                <h2>Life: {{pokeDetails.stats[0].base_stat}}</h2>
+                <meter min="0" max="200" [value]="pokeDetails.stats[0].base_stat" low="40" high="150" optimun="200"></meter>
+                <h2>Speed: {{pokeDetails.stats[5].base_stat}}</h2>
+                <meter min="0" max="200" [value]="pokeDetails.stats[5].base_stat" low="40" high="150" optimun="200"></meter>
+            </div>
+            <div class="stats_2">
+                <h2>Defense: {{pokeDetails.stats[2].base_stat}}</h2>
+                <meter min="0" max="200" [value]="pokeDetails.stats[2].base_stat" low="40" high="150" optimun="200"></meter>
+                <h2>Attack: {{pokeDetails.stats[1].base_stat}}</h2>
+                <meter min="0" max="200" [value]="pokeDetails.stats[1].base_stat" low="40" high="150" optimun="200"></meter>
+            </div>
+            <div class="stats_3">
+                <h2>Weight: {{pokeDetails.weight}}</h2>
+                <meter min="0" max="200" [value]="pokeDetails.weight" low="40" high="150" optimun="200"></meter>
+            </div>
+        </div>
+    </div>
+    <div class="btn">
+        <a routerLink="/">Go Back</a>
+    </div>
+</div>
